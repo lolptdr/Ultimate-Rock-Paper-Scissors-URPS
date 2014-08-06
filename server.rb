@@ -2,6 +2,7 @@ require 'sinatra'
 require 'rack-flash'
 require_relative 'lib/sesh.rb'
 
+set :bind, '0.0.0.0' 
 set :sessions, true
 use Rack::Flash
 
@@ -29,7 +30,8 @@ post '/signin' do
     session['sesh_example'] = user.username
     redirect to '/'
   else
-    "THAT'S NOT THE RIGHT PASSWORD!!!!"
+    flash[:alert] = "THAT'S NOT THE RIGHT PASSWORD!!!!"
+    redirect to 'signup'
   end
 end
 
@@ -46,7 +48,7 @@ post '/signup' do
 
   # This handles the issue of two identical users
   if Sesh.dbi.username_exists?(params['username'])
-    "Username already exists! Use a different username."
+    flash[:alert] = "Username already exists! Use a different username."
   elsif params['password'] == params['password-confirm']
     user = Sesh::User.new(params['username'])
     user.update_password(params['password'])
