@@ -6,10 +6,9 @@ module Sesh
     def initialize
       @db = PG.connect(host: 'localhost', dbname: 'sesh')
 
-      # create table users(username text, password_digest text);
-        # @db.exec(%q[
-        #   CREATE TABLE users(username TEXT, password_digest TEXT);
-        #   ])
+      # @db.exec(%q[
+      #     CREATE TABLE users(username TEXT, password_digest TEXT);
+      #     ])
     end
 
     def persist_user(user)
