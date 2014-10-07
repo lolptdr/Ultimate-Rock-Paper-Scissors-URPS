@@ -16,3 +16,5 @@ Back-end:
 Teammates:
 Randy Davis [@RandyDavis](https://github.com/RandyDavis)
 Justin Beuck [@JustinBeuck](https://github.com/JustinBeuck)
+
+![URPS](http://i.imgur.com/OVsI2EY.png)
